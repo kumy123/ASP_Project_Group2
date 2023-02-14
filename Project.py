@@ -8,6 +8,6 @@ project = pd.DataFrame(project_data)
 print(project)
 
 Column = ["Saudi Arabia","Kuwait","UAE","United Kingdom","Germany","France","Italy","Netherlands","Greece","Belgium & Luxembourg","Switzerland","Austria","Scandinavia","CIS & Eastern Europe","USA","Canada","Australia","New Zealand","Africa"]
-project.drop(["Africa "],inplace=True,axis=1)
+project.drop(["Africa "],inplace=True,axis=0)
 
 
