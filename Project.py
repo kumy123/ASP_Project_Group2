@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-project = pd.read_excel('Project_File.xlsx')
+project_data = pd.read_excel('Project_File.xlsx')
 print(project_data)
 project = pd.DataFrame(project_data)
 print(project)
