@@ -31,3 +31,16 @@ project = project.rename(columns={'   ':'Date'})
 
 project = project.dropna()
 
+print(project)
+project.info()
+project['Date'] = project['Date'].astype(str)
+print(type(project['Date']))
+print(project)
+project['Date'] = project['Date'].str.strip()
+project.info()
+
+project['Date'] = pd.to_datetime(project['Date'], errors='coerce')
+print(project['Date'])
+#project['Date'] = project.loc[project['Date'].dt.year < 2007-12-01]
+project2 = project[(project['Date'] > "2007-12-01")]
+print(project2)
