@@ -2,36 +2,37 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-
 #region = asia
 #era = 2008-2017
 
+class project_data:
 
-#load data from excel
-project_data = pd.read_excel('Project_File.xlsx')
-print(project_data)
-project = pd.DataFrame(project_data)
+       def __init__(self, file):
+              self.file = file
+
+
+       def load_data(self):
+              load_xlsx = pd.read_excel(self.file)
+              return load_xlsx
+
+       def parsed_data(self):
+              loaded_data = project_data.load_data(self)
+              filtered_region = loaded_data.drop(loaded_data.loc[:,' United Kingdom ':' Africa '].columns, axis=1)
+              filtered_region = filtered_region.rename(columns={'   ':'Date'})
+              filtered_region['Date'] = filtered_region['Date'].str.strip().str.split(' ',2).str[0].astype(int)
+              filtered_year = filtered_region.loc[(filtered_region['Date'] > 2007)]
+              return filtered_year
+
+
+
+
+x = project_data('Project_File.xlsx')
+df = project_data.load_data(x)
+print(df)
+
+project = project_data.parsed_data(x)
 print(project)
 
-
-#filter out by region selected
-project = project.drop(project.loc[:,' United Kingdom ':' Africa '].columns, axis=1)
-print(project)
-
-
-#rename col to date
-project = project.rename(columns={'   ':'Date'})
-
-#removing whitespace for filtering year
-project['Date'] = project['Date'].astype(str)
-project['Date'] = project['Date'].str.strip()
-project['Date'] = project['Date'].str.split(' ',2).str[0]
-project['Date'] = project['Date'].astype(int)
-
-#filter df by years
-project = project.loc[(project['Date'] > 2007)]
-project = project.reset_index(drop=True)
-print(project)
 
 #Q6
 asia = [' Brunei Darussalam ', ' Indonesia ', ' Malaysia ',
