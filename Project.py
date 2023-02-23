@@ -42,28 +42,26 @@ sum_col= project[asia].sum(axis=0)
 print(sum_col)
 sum_dict = sum_col.to_dict()
 print(sum_dict)
-#sum_col= pd.DataFrame(project[asia].sum(axis=0), columns=['total']).reset_index()
-#sum_col = sum_col.rename(columns={'index':'Countries'})
 countries = list(sum_dict.keys())
 total = list(sum_dict.values())
 import matplotlib.pyplot as plt
-ax = plt.axes()
-plt.figure(facecolor='white',figsize=(10,10))
-plt.bar(x = countries, height = total, color = 'orange' )
+fig1, ax = plt.subplots(figsize=(12, 10))
+bar_container = ax.bar(x = countries, height = total, color = 'orange' )
+ax.bar_label(bar_container, labels=total, fmt='{:,.0f}')
 plt.ticklabel_format(axis='y',style='plain')
-plt.bar_label(ax.containers[0])
-plt.xticks(rotation = 40)
+plt.xticks(rotation = 90)
 plt.xlabel('Countries')
 plt.ylabel('total no. of visitors')
 plt.show()
 
 
-#Q7
+#Q7 Sort values and show the top 3 in a region
 sorted_col = sum_col.sort_values(ascending=False)
 print(sorted_col)
 top3_val = sorted_col.head(3)
 print('the top 3 countries in the region are')
 print(top3_val)
+
 
 
 #sorted_value =
@@ -73,18 +71,8 @@ print(top3_val)
 
 #Q8
 #do the unittest, make sure to import unittest
-import unittest
-
-class TestMyProgram(unittest.TestCase):
-
-       def test_EngineType(self):
-              print('success')
-
-
-if __name__ == '__main__':
-       unittest.main()
 
 
 
 
-#09 presentation(fuck that)
+
