@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-
+import matplotlib.pyplot as plt
 
 
 #region = asia
@@ -47,10 +47,12 @@ print(sum_dict)
 countries = list(sum_dict.keys())
 total = list(sum_dict.values())
 import matplotlib.pyplot as plt
+ax = plt.axes()
 plt.figure(facecolor='white',figsize=(10,10))
 plt.bar(x = countries, height = total, color = 'orange' )
 plt.ticklabel_format(axis='y',style='plain')
-plt.xticks(rotation = 45)
+plt.bar_label(ax.containers[0])
+plt.xticks(rotation = 40)
 plt.xlabel('Countries')
 plt.ylabel('total no. of visitors')
 plt.show()
@@ -60,6 +62,7 @@ plt.show()
 sorted_col = sum_col.sort_values(ascending=False)
 print(sorted_col)
 top3_val = sorted_col.head(3)
+print('the top 3 countries in the region are')
 print(top3_val)
 
 
@@ -74,13 +77,8 @@ import unittest
 
 class TestMyProgram(unittest.TestCase):
 
-       def __int__(self):
-              self.file = file
-
-
-       def test_load_data(self):
-              load_data = pd.read_excel(self.file)
-              return load_data
+       def test_EngineType(self):
+              print('success')
 
 
 if __name__ == '__main__':
